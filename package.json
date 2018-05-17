@@ -15,7 +15,8 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "tsc -d"
+		"build": "tsc -d",
+		"test": "tsc && ava dist/test.js"
 	},
 	"eslintConfig": {
 		"extends": "byungi"

@@ -11,11 +11,8 @@ export class Runner {
     )
   }
 
-  public queue (action: Array<Action | Runner>) {
-    if (typeof action !== 'function') {
-      throw new TypeError('Expected argument of type "function" or "Runner"')
-    }
-    this._queue.push(action)
+  public queue (...acts: Array<Action | Runner>) {
+    this._queue.push(...acts)
   }
 
   public waitAll () {
