@@ -7,7 +7,11 @@ export class Runner {
 
   public run (...pList: Awaitable[]) {
     this._pList.push(
-      ...pList.map(p => p instanceof Runner ? p.waitAll() : typeof p === 'function' ? p() : p)
+      ...pList.map(p => {
+        p = p instanceof Runner ? p.waitAll() : typeof p === 'function' ? p() : p
+        if (!p.then) throw TypeError('Expected type of "Promise".')
+        return p
+      })
     )
   }
 
@@ -15,14 +19,21 @@ export class Runner {
     this._queue.push(...acts)
   }
 
-  public waitAll () {
-    this._pList.push(...this._queue.map(q => q instanceof Runner ? q.waitAll() : q()))
+  public waitAll (silent = false) {
+    this._pList.push(
+      ...this._queue.map(q => {
+        const p = q instanceof Runner ? q.waitAll() : q()
+        if (!p.then) throw TypeError('que"Promise".')
+        return p
+      })
+    )
     this._queue = []
 
     const pList = [...this._pList]
-    const clear = () => (this._pList = this._pList.filter(p => pList.indexOf(p) === -1))
+    this._pList = this._pList.filter(p => pList.indexOf(p) === -1)
 
-    return Promise.all(pList).then(clear).catch(clear)
+    return Promise.all(pList)
+      .catch(err => Promise[silent ? 'resolve' : 'reject'](err))
   }
 }
 
