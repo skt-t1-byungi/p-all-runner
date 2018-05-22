@@ -1,7 +1,7 @@
 {
 	"name": "p-all-runner",
 	"description": "Async function runner to remove the ugly IIFE",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"main": "dist/index.js",
 	"license": "MIT",
 	"author": {
@@ -21,7 +21,7 @@
 		"pool"
 	],
 	"files": [
-		"dist/"
+		"dist"
 	],
 	"scripts": {
 		"build": "tsc -d",
