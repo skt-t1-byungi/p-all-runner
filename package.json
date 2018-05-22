@@ -1,5 +1,6 @@
 {
 	"name": "p-runner",
+	"description": "Async function runner to remove the ugly IIFE",
 	"version": "0.0.0",
 	"main": "dist/index.js",
 	"license": "MIT",
