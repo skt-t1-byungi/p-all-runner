@@ -1,20 +1,20 @@
-# p-runner
+# p-all-runner
 Async function runner to remove the ugly IIFE
 
-[![npm](https://img.shields.io/npm/v/p-runner.svg?style=flat-square)](https://www.npmjs.com/package/p-runner)
+[![npm](https://img.shields.io/npm/v/p-all-runner.svg?style=flat-square)](https://www.npmjs.com/package/p-all-runner)
 
 
 ## Install
 ```sh
-yarn add p-runner
+yarn add p-all-runner
 ```
 
 ```js
 //esm
-import runner from "p-runner";
+import runner from "p-all-runner";
 
 //commonjs
-const {runner} = require('p-runner');
+const {runner} = require('p-all-runner');
 ```
 
 ### What?
@@ -52,7 +52,7 @@ Even within the async function there are concurrent tasks that do not "await" im
   await pool.wait()
 })()
 ```
-The p-runner calls the async function instead to remove the IIFE.
+The p-all-runner calls the async function instead to remove the IIFE.
 
 ### API
 #### Runner
@@ -61,12 +61,12 @@ Create an runner(pool) instance.
 ```js
 const pool = runner()
 // or 
-import {Runner} from "p-runner"
+import {Runner} from "p-all-runner"
 const pool = new Runner()
 ```
 
 #### pool.add(awaitable)
-Add an async function to run immediately. it is possible to add promise or p-runner instance instead of async function.
+Add an async function to run immediately. it is possible to add promise or p-all-runner instance instead of async function.
 
 ```js
 pool.add(
@@ -80,7 +80,7 @@ pool.add(otherPool)
 ```
 
 #### pool.defer(act)
-Run async function when `pool.wait()` is called. This is useful when using other p-runner instance together.
+Run async function when `pool.wait()` is called. This is useful when using other p-all-runner instance together.
 
 ```js
 pool.defer(async()=>{

@@ -1,7 +1,7 @@
 {
-	"name": "p-runner",
+	"name": "p-all-runner",
 	"description": "Async function runner to remove the ugly IIFE",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"main": "dist/index.js",
 	"license": "MIT",
 	"author": {
@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/skt-t1-byungi/p-runner.git"
+		"url": "https://github.com/skt-t1-byungi/p-all-runner.git"
 	},
 	"keywords": [
 		"promise",
@@ -21,11 +21,12 @@
 		"pool"
 	],
 	"files": [
-		"dist"
+		"dist/"
 	],
 	"scripts": {
 		"build": "tsc -d",
-		"test": "tsc && ava dist/test.js"
+		"test": "tsc && ava dist/test.js",
+		"prepublishOnly": "npm run build"
 	},
 	"eslintConfig": {
 		"extends": "byungi"
