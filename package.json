@@ -11,6 +11,14 @@
 		"type": "git",
 		"url": "https://github.com/skt-t1-byungi/p-runner.git"
 	},
+	"keywords": [
+		"promise",
+		"async",
+		"await",
+		"sync",
+		"runner",
+		"pool"
+	],
 	"files": [
 		"dist"
 	],
